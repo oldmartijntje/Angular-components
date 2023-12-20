@@ -1,11 +1,14 @@
-<div class="body">
+<div class="body" *ngIf="intro == false">
     <header *ngIf="false">
         <p>optional</p>
     </header>
     <div class="screen" [ngStyle]="scene.styling">
-        <div class="save icon" style="display: flex; flex-direction: row; justify-content: end;">
+        <div class="save icon" style="display: flex; flex-direction: row-reverse; justify-content: space-between; ">
             <img src="../../../../assets/icons/save.ico" alt="Save Button" style="cursor: pointer; user-select:none;"
                 title="Save Button" (click)="emitSavingEvent()" *ngIf="showSaveIcon">
+            <img src="../../../../assets/icons/turnOff.ico" alt="Close Button"
+                style="cursor: pointer; user-select:none;" title="Exit Button" (click)="emitSavingEvent()"
+                *ngIf="showExitButton">
         </div>
         <div class="textbox" [ngStyle]="getStyling('prompt')">
             {{getText()}}
@@ -22,4 +25,15 @@
             <p>{{getTextForTextBox()}}</p>
         </div>
     </div>
+</div>
+<div *ngIf="intro" class="body">
+    <app-glitch-text [text]="'Powered by'" [locationStyling]="{'margin-top': '40%'}"
+        [href]="'https://github.com/oldmartijntje/Angular-components'"
+        [textStyling]="{'font-size': '2rem', 'cursor': 'pointer'}"></app-glitch-text>
+    <app-glitch-text [text]="'OldMartijntje'" [locationStyling]="{'margin-top': '7%'}"
+        [textStyling]="{'cursor': 'pointer'}"
+        [href]="'https://github.com/oldmartijntje/Angular-components'"></app-glitch-text>
+    <app-glitch-text [text]="'You can use this for free.'" [locationStyling]="{'margin-top': '10%'}"
+        [textStyling]="{'font-size': '2rem', 'cursor': 'pointer'}"
+        [href]="'https://github.com/oldmartijntje/Angular-components'"></app-glitch-text>
 </div>
